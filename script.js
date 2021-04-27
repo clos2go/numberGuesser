@@ -8,12 +8,26 @@ let generateTarget = () => {
 };
 // console.log(generateTarget());
 
-let compareGuess = (userGuess, cpuGuess, secretNum) => {
-  const userDiff = Math.abs(userGuess) - Math.abs(secretNum);
-  const cpuDiff = Math.abs(cpuGuess) - Math.abs(secretNum);
-  // if (Math.abs(userGuess) - )
-  console.log(`user`, userDiff);
-  console.log(`cpu`, cpuDiff);
+let compareGuesses = (userGuess, cpuGuess, secretNum) => {
+  const userDiff = Math.abs(userGuess - secretNum);
+  const cpuDiff = Math.abs(cpuGuess - secretNum);
+  if (userDiff < cpuDiff || userDiff === cpuDiff) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
-compareGuess(2, 9, generateTarget());
+let updateScore = (winner) => {
+  if ((winner = "human")) {
+    humanScore++;
+  } else {
+    computerScore++;
+  }
+};
+
+let advanceRound = () => {
+  currentRoundNumber++;
+};
+
+compareGuesses(2, 9, generateTarget());
